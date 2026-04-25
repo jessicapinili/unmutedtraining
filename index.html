@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNMUTED — The Short-Form Content Formula</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-burgundy: #3D0C11;
+    --dark-bg: #2A0A0E;
+    --cream-gold: #E8D5A3;
+    --bright-gold: #F5D547;
+    --blush: #F2A7B0;
+    --crimson: #C1384A;
+    --cream: #F2EDDC;
+    --white: #FFFFFF;
+    --text-muted: rgba(232, 213, 163, 0.6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep-burgundy);
+    color: var(--cream-gold);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(61, 12, 17, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(232, 213, 163, 0.1);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream-gold);
+  }
+  .nav-cta {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--deep-burgundy);
+    background: var(--cream-gold);
+    padding: 10px 28px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border-radius: 50px;
+  }
+  .nav-cta:hover {
+    background: var(--bright-gold);
+    transform: translateY(-1px);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 140px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'UNMUTED';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 28vw;
+    font-weight: 900;
+    color: rgba(232, 213, 163, 0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.02em;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    color: var(--cream-gold);
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--cream-gold);
+  }
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream-gold);
+    max-width: 700px;
+    margin: 20px auto 50px;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+  .hero-price-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .hero-price-badge .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--bright-gold);
+  }
+  .hero-price-badge .divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(232, 213, 163, 0.3);
+  }
+  .hero-price-badge .includes {
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+  .hero-price-badge .includes strong {
+    color: var(--cream-gold);
+    font-weight: 600;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--cream-gold);
+    color: var(--deep-burgundy);
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 20px 60px;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    border-radius: 50px;
+  }
+  .hero-cta:hover {
+    background: var(--bright-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(245, 213, 71, 0.2);
+  }
+  .hero-cta-sub {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-wrap {
+    overflow: hidden;
+    padding: 30px 0;
+    border-top: 1px solid rgba(232, 213, 163, 0.08);
+    border-bottom: 1px solid rgba(232, 213, 163, 0.08);
+    background: var(--dark-bg);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll 25s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0 30px;
+    color: var(--text-muted);
+  }
+  .marquee-track span.dot {
+    color: var(--crimson);
+    padding: 0 15px;
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ─── IMAGE BANNER ─── */
+  .image-banner {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .image-banner img {
+    width: 100%;
+    display: block;
+    border: 2px solid rgba(232, 213, 163, 0.15);
+  }
+
+  /* ─── PROBLEM SECTION ─── */
+  .problem {
+    padding: 100px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .problem-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 40px;
+  }
+  .problem h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--cream-gold);
+    margin-bottom: 40px;
+  }
+  .problem h2 em {
+    font-style: italic;
+    color: var(--blush);
+  }
+  .problem p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0 auto 20px;
+  }
+  .problem p strong {
+    color: var(--cream-gold);
+    font-weight: 600;
+  }
+
+  /* ─── SPLIT SECTION (What's Inside) ─── */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    border-top: 1px solid rgba(232, 213, 163, 0.08);
+  }
+  .split-left {
+    background: var(--dark-bg);
+    padding: 100px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .split-right {
+    padding: 100px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--deep-burgundy);
+  }
+  .split-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 30px;
+  }
+  .split-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+  .split-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--blush);
+  }
+  .inclusion-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .inclusion-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cream-gold);
+  }
+  .inclusion-list .icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: var(--crimson);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--cream);
+    margin-top: 2px;
+  }
+  .inclusion-list .label {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+    color: var(--bright-gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ─── RIGHT SIDE: THE OFFER CARDS ─── */
+  .offer-card {
+    background: rgba(232, 213, 163, 0.05);
+    border: 1px solid rgba(232, 213, 163, 0.1);
+    padding: 40px;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .offer-card-badge {
+    position: absolute;
+    top: -14px;
+    left: 30px;
+    background: var(--crimson);
+    color: var(--cream);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 6px 16px;
+  }
+  .offer-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .offer-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* ─── THIS IS FOR YOU ─── */
+  .for-you {
+    padding: 100px 40px;
+    max-width: 100%;
+    margin: 0 auto;
+    border-top: 1px solid rgba(232, 213, 163, 0.08);
+    background: linear-gradient(180deg, #5A1A22 0%, #4A1319 100%);
+  }
+  .for-you-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .for-you-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .for-you-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .for-you-header h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--blush);
+  }
+  .for-you-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .for-you-item {
+    background: rgba(232, 213, 163, 0.06);
+    padding: 40px;
+    border: 1px solid rgba(232, 213, 163, 0.1);
+    transition: background 0.3s;
+    border-radius: 12px;
+  }
+  .for-you-item:hover {
+    background: rgba(232, 213, 163, 0.1);
+  }
+  .for-you-item .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: rgba(232, 213, 163, 0.15);
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+  .for-you-item p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cream-gold);
+  }
+  .for-you-item p strong {
+    color: var(--bright-gold);
+    font-weight: 600;
+  }
+
+  /* ─── WHAT YOU'LL LEARN ─── */
+  .learn {
+    padding: 100px 40px;
+    background: var(--cream-gold);
+    border-top: none;
+    border-bottom: none;
+  }
+  .learn-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .learn-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .learn-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    line-height: 1.2;
+    color: var(--deep-burgundy);
+  }
+  .learn-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+  .learn-items .learn-item:nth-child(4),
+  .learn-items .learn-item:nth-child(5) {
+    grid-column: auto;
+  }
+  .learn-items-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .learn-items-bottom .learn-item {
+    max-width: calc(33.333% - 14px);
+    flex: 0 0 calc(33.333% - 14px);
+  }
+  .learn-item {
+    background: rgba(61, 12, 17, 0.08);
+    border: 1px solid rgba(61, 12, 17, 0.12);
+    border-radius: 16px;
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .learn-item .bullet {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    background: var(--crimson);
+    border-radius: 2px;
+    margin-bottom: 18px;
+  }
+  .learn-item p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--deep-burgundy);
+  }
+  .learn-item p strong {
+    color: var(--crimson);
+  }
+
+  /* ─── ABOUT / FOUNDER ─── */
+  .founder {
+    padding: 100px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .founder-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 30px;
+  }
+  .founder h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream-gold);
+    margin-bottom: 30px;
+  }
+  .founder p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .founder p strong {
+    color: var(--cream-gold);
+    font-weight: 600;
+  }
+  .founder-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--cream-gold);
+    margin-top: 30px;
+  }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    padding: 120px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(232, 213, 163, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '$7';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 30vw;
+    font-weight: 900;
+    color: rgba(232, 213, 163, 0.02);
+    pointer-events: none;
+  }
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .final-cta h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--blush);
+  }
+  .final-cta .final-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-style: italic;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+    position: relative;
+  }
+  .final-cta .final-inclusions {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .final-cta .final-inclusions strong {
+    color: var(--cream-gold);
+  }
+  .final-cta .cta-btn {
+    display: inline-block;
+    background: var(--cream-gold);
+    color: var(--deep-burgundy);
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 22px 70px;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    border-radius: 50px;
+  }
+  .final-cta .cta-btn:hover {
+    background: var(--bright-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(245, 213, 71, 0.2);
+  }
+  .final-cta .notion-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid rgba(232, 213, 163, 0.06);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  footer a {
+    color: var(--cream-gold);
+    text-decoration: none;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    .nav { padding: 16px 20px; }
+    .nav-logo { font-size: 11px; letter-spacing: 2px; }
+    .nav-cta { padding: 8px 20px; font-size: 11px; }
+    .hero { padding: 120px 24px 60px; }
+    .hero-price-badge { flex-direction: column; gap: 12px; }
+    .hero-price-badge .divider { width: 60px; height: 1px; }
+    .hero-price-badge .includes { text-align: center; }
+    .hero-cta { padding: 18px 40px; font-size: 13px; }
+    .split { grid-template-columns: 1fr; }
+    .split-left, .split-right { padding: 60px 24px; }
+    .for-you-grid { grid-template-columns: 1fr; }
+    .problem, .founder { padding: 60px 24px; }
+    .learn { padding: 60px 24px; }
+    .learn-items { grid-template-columns: 1fr; }
+    .learn-items-bottom { flex-direction: column; }
+    .learn-items-bottom .learn-item { max-width: 100%; flex: 1; }
+    .final-cta { padding: 80px 24px; }
+    .final-cta .cta-btn { padding: 18px 40px; font-size: 14px; }
+    .image-banner { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Jessica Pinili</div>
+  <a href="https://www.jessicapinili.com/offers/2TRfmpAX" target="_blank" class="nav-cta">Get Unmuted — $7</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">A $7 Training + Notion Dashboard</div>
+  <h1 class="hero-title"><em>Un</em>muted</h1>
+  <p class="hero-subtitle">The Short-Form Content Formula That Gets Brand Founders Seen, Saved & Sold.</p>
+
+  <div class="hero-price-badge">
+    <div class="price">$7</div>
+    <div class="divider"></div>
+    <div class="includes">
+      <strong>Video Training</strong> + <strong>Notion Dashboard</strong><br>
+      Delivered instantly
+    </div>
+  </div>
+
+  <a href="https://www.jessicapinili.com/offers/2TRfmpAX" target="_blank" class="hero-cta">Get Instant Access</a>
+  <p class="hero-cta-sub">Sent straight to your inbox. Access with a free Notion account.</p>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>seen</span><span class="dot">&mdash;</span>
+    <span>saved</span><span class="dot">&mdash;</span>
+    <span>sold</span><span class="dot">&mdash;</span>
+    <span>hooks that stop the scroll</span><span class="dot">&mdash;</span>
+    <span>content that converts</span><span class="dot">&mdash;</span>
+    <span>DMs not crickets</span><span class="dot">&mdash;</span>
+    <span>batch in under 2 hours</span><span class="dot">&mdash;</span>
+    <span>seen</span><span class="dot">&mdash;</span>
+    <span>saved</span><span class="dot">&mdash;</span>
+    <span>sold</span><span class="dot">&mdash;</span>
+    <span>hooks that stop the scroll</span><span class="dot">&mdash;</span>
+    <span>content that converts</span><span class="dot">&mdash;</span>
+    <span>DMs not crickets</span><span class="dot">&mdash;</span>
+    <span>batch in under 2 hours</span><span class="dot">&mdash;</span>
+  </div>
+</div>
+
+<!-- UNMUTED IMAGE BANNER -->
+<div class="image-banner">
+  <img src="/mnt/user-data/uploads/Unmuted_Training_Feb_2026.png" alt="Unmuted — The Short-Form Content Formula That Gets You Seen, Saved & Sold" />
+</div>
+
+<!-- THIS IS FOR YOU -->
+<section class="for-you">
+  <div class="for-you-inner">
+  <div class="for-you-header">
+    <div class="problem-label" style="margin-bottom: 20px;">This is for you if...</div>
+    <h2>You're <em>done</em> being the<br>internet's best-kept secret.</h2>
+  </div>
+  <div class="for-you-grid">
+    <div class="for-you-item">
+      <div class="num">01</div>
+      <p>You're posting consistently but it feels like <strong>nobody is actually listening</strong> — low saves, no DMs, crickets in your inbox.</p>
+    </div>
+    <div class="for-you-item">
+      <div class="num">02</div>
+      <p>You know your offer is good — <strong>your content just isn't creating demand</strong> for it. Views aren't translating to sales conversations.</p>
+    </div>
+    <div class="for-you-item">
+      <div class="num">03</div>
+      <p>You want to grow on IG or TikTok <strong>without dancing, pointing, lip-syncing,</strong> or forcing trends that don't feel like you.</p>
+    </div>
+    <div class="for-you-item">
+      <div class="num">04</div>
+      <p>You're tired of spending hours on content with nothing to show for it and <strong>want a system that makes batching fast</strong> and repeatable.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- SPLIT: WHAT'S INSIDE -->
+<section class="split">
+  <div class="split-left">
+    <div class="split-label">What's Inside</div>
+    <h2 class="split-title">You get <em>both.</em><br>The training<br>& the system.</h2>
+    <ul class="inclusion-list">
+      <li>
+        <div class="icon">01</div>
+        <div>
+          <span class="label">Video Training</span>
+          Learn the exact framework to create short-form content that gets seen, saved, and sold — not just viewed. Hooks, structure, psychology, and the shift that makes people actually watch to the end.
+        </div>
+      </li>
+      <li>
+        <div class="icon">02</div>
+        <div>
+          <span class="label">Notion Content Dashboard</span>
+          A complete content creation system with a step-by-step video walkthrough. Plan, batch, and execute a week of high-performing content in under 2 hours. Yours to keep and reuse forever.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="split-right">
+    <div class="offer-card" style="margin-bottom: 30px;">
+      <div class="offer-card-badge">The Training</div>
+      <h3>The Unmuted Formula</h3>
+      <p>My signature framework for short-form content that doesn't just get views — it gets saves, shares, DMs, and actual sales conversations. Learn how to write hooks that stop the scroll in the first 3 seconds, use psychology to keep people watching, and turn everyday posts into demand for your offer.</p>
+    </div>
+    <div class="offer-card">
+      <div class="offer-card-badge">The System</div>
+      <h3>Notion Content Dashboard</h3>
+      <p>Stop starting from zero every time you post. This is your repeatable system — a ready-to-use Notion dashboard that walks you through ideation, batching, and execution so your content compounds instead of disappearing. Includes a full video walkthrough so you're never guessing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL LEARN -->
+<section class="learn">
+  <div class="learn-inner">
+    <div class="learn-label">Inside the Training</div>
+    <h2 class="learn-title">What you'll walk away with</h2>
+    <div class="learn-items">
+      <div class="learn-item">
+        <div class="bullet"></div>
+        <p>Create short-form content that actually gets <strong>seen, saved, and shared</strong> instead of dying at 200 views</p>
+      </div>
+      <div class="learn-item">
+        <div class="bullet"></div>
+        <p>Write hooks that <strong>stop the scroll in the first 3 seconds</strong> without sounding like every other coach on the internet</p>
+      </div>
+      <div class="learn-item">
+        <div class="bullet"></div>
+        <p>Use psychology to make people <strong>watch until the end</strong> and feel compelled to engage</p>
+      </div>
+    </div>
+    <div class="learn-items-bottom">
+      <div class="learn-item">
+        <div class="bullet"></div>
+        <p>Turn everyday posts into <strong>DMs, replies, and actual sales conversations</strong></p>
+      </div>
+      <div class="learn-item">
+        <div class="bullet"></div>
+        <p><strong>Batch a week of high-performing content in under 2 hours</strong> using the Notion Dashboard and a repeatable system</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder">
+  <div class="founder-label">Your Instructor</div>
+  <h2>"It was never about posting more. I just needed to stop muting myself."</h2>
+  <p>I'm <strong>Jess Pinili</strong> — Business Strategist helping brand founders and creators turn their voice into visibility and their visibility into real momentum.</p>
+  <p>When I first started online, I was doing everything "right." Posting daily. Sharing tips. Following every content rule. But underneath it, I was terrified of being seen, constantly second-guessing my message, and wondering why my content wasn't actually moving the needle.</p>
+  <p><strong>Unmuted</strong> is the framework I wish I had back then. The one that teaches you how to express what you do, own your presence, and create content that actually leads somewhere — to DMs, to clients, to sales.</p>
+  <div class="founder-name">— Jess Pinili</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="checkout">
+  <h2>Get <em>Unmuted</em></h2>
+  <p class="final-sub">The training + Notion dashboard that turns your voice into content that actually converts.</p>
+  <p class="final-inclusions"><strong>Video Training</strong> + <strong>Notion Content Dashboard</strong> &mdash; Instant Access</p>
+  <a href="https://www.jessicapinili.com/offers/2TRfmpAX" target="_blank" class="cta-btn">Get Instant Access — $7</a>
+  <p class="notion-note">Ps. You can access everything using a free Notion account.</p>
+</section>
+
+<!-- FOOTER MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>seen</span><span class="dot">&mdash;</span>
+    <span>saved</span><span class="dot">&mdash;</span>
+    <span>sold</span><span class="dot">&mdash;</span>
+    <span>unmuted</span><span class="dot">&mdash;</span>
+    <span>your voice matters</span><span class="dot">&mdash;</span>
+    <span>content that converts</span><span class="dot">&mdash;</span>
+    <span>seen</span><span class="dot">&mdash;</span>
+    <span>saved</span><span class="dot">&mdash;</span>
+    <span>sold</span><span class="dot">&mdash;</span>
+    <span>unmuted</span><span class="dot">&mdash;</span>
+    <span>your voice matters</span><span class="dot">&mdash;</span>
+    <span>content that converts</span><span class="dot">&mdash;</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://www.jessicapinili.com">Jessica Pinili</a> &nbsp;&mdash;&nbsp; Woman Mastery HQ &nbsp;&mdash;&nbsp; &copy; 2026
+</footer>
+
+</body>
+</html>
