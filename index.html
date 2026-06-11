@@ -121,7 +121,7 @@
     font-family: 'Playfair Display', serif;
     font-size: clamp(18px, 2.5vw, 28px);
     font-weight: 400;
-    font-style: italic;
+    font-style: normal;
     color: var(--cream-gold);
     max-width: 700px;
     margin: 20px auto 50px;
@@ -180,7 +180,7 @@
     margin-top: 16px;
     font-size: 13px;
     color: var(--text-muted);
-    font-style: italic;
+    font-style: normal;
   }
 
   /* ─── MARQUEE ─── */
@@ -250,7 +250,7 @@
     margin-bottom: 40px;
   }
   .problem h2 em {
-    font-style: italic;
+    font-style: normal;
     color: var(--blush);
   }
   .problem p {
@@ -301,7 +301,7 @@
     margin-bottom: 40px;
   }
   .split-title em {
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     color: var(--blush);
   }
@@ -396,7 +396,7 @@
     line-height: 1.1;
   }
   .for-you-header h2 em {
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     color: var(--blush);
   }
@@ -506,136 +506,132 @@
     color: var(--crimson);
   }
 
-  /* ─── ABOUT / FOUNDER ─── */
-  .founder {
-    padding: 100px 40px;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
+  /* ─── CHECKOUT ─── */
+  .checkout {
+    padding: 120px 40px;
+    border-top: 1px solid rgba(232, 213, 163, 0.08);
+    background: var(--deep-burgundy);
   }
-  .founder-label {
+  .checkout-card {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--cream);
+    border-radius: 28px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.35);
+  }
+  .checkout-left {
+    padding: 56px 48px;
+  }
+  .checkout-eyebrow {
     font-size: 12px;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--crimson);
-    margin-bottom: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
   }
-  .founder h2 {
+  .checkout-left h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(24px, 3.5vw, 36px);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.5;
-    color: var(--cream-gold);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--deep-burgundy);
     margin-bottom: 30px;
   }
-  .founder p {
+  .checkout-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 0;
+    border-top: 1px solid rgba(61, 12, 17, 0.12);
+  }
+  .checkout-item:first-of-type {
+    border-top: none;
+  }
+  .checkout-item .arrow {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: var(--crimson);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    margin-top: 1px;
+  }
+  .checkout-item p {
+    margin: 0;
     font-size: 16px;
-    line-height: 1.8;
+    line-height: 1.5;
+    color: var(--deep-burgundy);
+  }
+  .checkout-item p strong {
+    color: var(--crimson);
+    font-weight: 700;
+  }
+  .checkout-right {
+    background: var(--deep-burgundy);
+    padding: 56px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .checkout-right .label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     color: var(--text-muted);
+    font-weight: 600;
     margin-bottom: 16px;
   }
-  .founder p strong {
-    color: var(--cream-gold);
-    font-weight: 600;
-  }
-  .founder-name {
+  .checkout-price {
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-style: italic;
-    color: var(--cream-gold);
-    margin-top: 30px;
-  }
-
-  /* ─── FINAL CTA ─── */
-  .final-cta {
-    padding: 120px 40px;
-    text-align: center;
-    border-top: 1px solid rgba(232, 213, 163, 0.08);
-    position: relative;
-    overflow: hidden;
-  }
-  .final-cta-box {
-    background: rgba(61, 12, 17, 0.95);
-    border: 1px solid rgba(232, 213, 163, 0.2);
-    border-radius: 32px;
-    padding: 80px 60px;
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
-  }
-  .final-cta::before {
-    content: '$7';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Playfair Display', serif;
-    font-size: 30vw;
     font-weight: 900;
-    color: rgba(232, 213, 163, 0.02);
-    pointer-events: none;
+    font-size: clamp(64px, 10vw, 88px);
+    line-height: 0.9;
+    color: var(--cream);
+    margin: 0;
   }
-  .final-cta h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  .final-cta h2 em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--blush);
-  }
-  .final-cta .final-sub {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(18px, 2.5vw, 26px);
-    font-style: italic;
+  .checkout-price-sub {
+    font-size: 14px;
     color: var(--text-muted);
-    max-width: 650px;
-    margin: 0 auto 20px;
-    line-height: 1.5;
-    position: relative;
+    margin: 12px 0 32px;
   }
-  .final-cta .final-inclusions {
+  .checkout-btn {
+    display: block;
+    text-align: center;
+    background: var(--cream-gold);
+    color: var(--deep-burgundy);
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 50px;
-    position: relative;
-  }
-  .final-cta .final-inclusions strong {
-    color: var(--cream-gold);
-  }
-  .final-cta .cta-btn {
-    display: inline-block;
-    background: var(--cream-gold);
-    color: var(--deep-burgundy);
-    font-size: 16px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
     font-weight: 700;
-    padding: 22px 70px;
+    padding: 20px 24px;
+    border-radius: 50px;
     text-decoration: none;
     transition: all 0.3s;
-    position: relative;
-    border-radius: 50px;
   }
-  .final-cta .cta-btn:hover {
+  .checkout-btn:hover {
     background: var(--bright-gold);
     transform: translateY(-2px);
     box-shadow: 0 10px 40px rgba(245, 213, 71, 0.2);
   }
-  .final-cta .notion-note {
-    margin-top: 20px;
-    font-size: 13px;
+  .checkout-fine {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     color: var(--text-muted);
-    font-style: italic;
-    position: relative;
+    margin-top: 20px;
+    line-height: 1.8;
+  }
+  .checkout-fine strong {
+    color: var(--cream-gold);
+    font-weight: 600;
   }
 
   /* ─── FOOTER ─── */
@@ -671,16 +667,16 @@
     .for-you-grid { grid-template-columns: 1fr; gap: 12px; }
     .for-you-item { padding: 28px 20px; }
 
-    .problem, .founder { padding: 60px 20px; }
+    .problem { padding: 60px 20px; }
 
     .learn { padding: 60px 20px; }
     .learn-items { grid-template-columns: 1fr; }
     .learn-items-bottom { flex-direction: column; }
     .learn-items-bottom .learn-item { max-width: 100%; flex: 1; }
 
-    .final-cta { padding: 60px 20px; }
-    .final-cta-box { padding: 50px 24px; border-radius: 24px; }
-    .final-cta .cta-btn { padding: 18px 32px; font-size: 13px; letter-spacing: 2px; width: 100%; max-width: 320px; display: block; margin: 0 auto; }
+    .checkout { padding: 60px 20px; }
+    .checkout-card { grid-template-columns: 1fr; border-radius: 20px; }
+    .checkout-left, .checkout-right { padding: 40px 24px; }
 
     .offer-card { padding: 30px 20px; }
 
@@ -693,12 +689,12 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-logo">Jessica Pinili</div>
-  <a href="https://www.jessicapinili.com/offers/2TRfmpAX" target="_blank" class="nav-cta">Get Unmuted — $7</a>
+  <a href="https://www.jessicapinili.com/offers/2TRfmpAX/checkout" target="_blank" class="nav-cta">Get Unmuted — $7</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">A $7 Training + Notion Dashboard</div>
+  <div class="hero-eyebrow">A $7 Training + Content Dashboard</div>
   <h1 class="hero-title"><em>Un</em>muted</h1>
   <p class="hero-subtitle">The Short-Form Content Formula That Gets Brand Founders Seen, Saved & Sold.</p>
 
@@ -706,13 +702,13 @@
     <div class="price">$7</div>
     <div class="divider"></div>
     <div class="includes">
-      <strong>Video Training</strong> + <strong>Notion Dashboard</strong><br>
+      <strong>Video Training</strong> + <strong>Content Dashboard</strong><br>
       Delivered instantly
     </div>
   </div>
 
-  <a href="https://www.jessicapinili.com/offers/2TRfmpAX" target="_blank" class="hero-cta">Get Instant Access</a>
-  <p class="hero-cta-sub">Sent straight to your inbox. Access with a free Notion account.</p>
+  <a href="https://www.jessicapinili.com/offers/2TRfmpAX/checkout" target="_blank" class="hero-cta">Get Instant Access</a>
+  <p class="hero-cta-sub">Sent straight to your inbox.</p>
 </section>
 
 <!-- MARQUEE -->
@@ -779,7 +775,7 @@
       <li>
         <div class="icon">02</div>
         <div>
-          <span class="label">Notion Content Dashboard</span>
+          <span class="label">Content Dashboard</span>
           A complete content creation system with a step-by-step video walkthrough. Plan, batch, and execute a week of high-performing content in under 2 hours. Yours to keep and reuse forever.
         </div>
       </li>
@@ -794,8 +790,8 @@
     </div>
     <div class="offer-card">
       <div class="offer-card-badge">The System</div>
-      <h3>Notion Content Dashboard</h3>
-      <p>Stop starting from zero every time you post. This is your repeatable system — a ready-to-use Notion dashboard that walks you through ideation, batching, and execution so your content compounds instead of disappearing. Includes a full video walkthrough so you're never guessing.</p>
+      <h3>Content Dashboard</h3>
+      <p>Stop starting from zero every time you post. This is your repeatable system. A ready-to-use interactive dashboard that walks you through ideation, batching, and execution so your content compounds instead of disappearing. Includes a full video walkthrough so you're never guessing.</p>
     </div>
   </div>
 </section>
@@ -826,30 +822,30 @@
       </div>
       <div class="learn-item">
         <div class="bullet"></div>
-        <p><strong>Batch a week of high-performing content in under 2 hours</strong> using the Notion Dashboard and a repeatable system</p>
+        <p><strong>Batch a week of high-performing content in under 2 hours</strong> using the Content Dashboard and a repeatable system</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section class="founder">
-  <div class="founder-label">Your Instructor</div>
-  <h2>"It was never about posting more. I just needed to stop muting myself."</h2>
-  <p>I'm <strong>Jess Pinili</strong> — Business Strategist helping brand founders and creators turn their voice into visibility and their visibility into real momentum.</p>
-  <p>When I first started online, I was doing everything "right." Posting daily. Sharing tips. Following every content rule. But underneath it, I was terrified of being seen, constantly second-guessing my message, and wondering why my content wasn't actually moving the needle.</p>
-  <p><strong>Unmuted</strong> is the framework I wish I had back then. The one that teaches you how to express what you do, own your presence, and create content that actually leads somewhere — to DMs, to clients, to sales.</p>
-  <div class="founder-name">— Jess Pinili</div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta" id="checkout">
-  <div class="final-cta-box">
-    <h2>Get <em>Unmuted</em></h2>
-    <p class="final-sub">The training + Notion dashboard that turns your voice into content that actually converts.</p>
-    <p class="final-inclusions"><strong>Video Training</strong> + <strong>Notion Content Dashboard</strong> &mdash; Instant Access</p>
-    <a href="https://www.jessicapinili.com/offers/2TRfmpAX" target="_blank" class="cta-btn">Get Instant Access — $7</a>
-    <p class="notion-note">Ps. You can access everything using a free Notion account.</p>
+<!-- CHECKOUT -->
+<section class="checkout" id="checkout">
+  <div class="checkout-card">
+    <div class="checkout-left">
+      <div class="checkout-eyebrow">What you get</div>
+      <h2>Everything inside Unmuted.</h2>
+      <div class="checkout-item"><span class="arrow">&rarr;</span><p>The <strong>3-Pillar Content System</strong> that makes you magnetic AND profitable</p></div>
+      <div class="checkout-item"><span class="arrow">&rarr;</span><p><strong>12 high-converting hooks</strong> you can use this week (on IG or TikTok)</p></div>
+      <div class="checkout-item"><span class="arrow">&rarr;</span><p>The <strong>Psychology Method</strong> (how to make people NEED to watch until the end)</p></div>
+      <div class="checkout-item"><span class="arrow">&rarr;</span><p>The <strong>Content Calendar Blueprint</strong> (so you never stare at a blank screen again)</p></div>
+    </div>
+    <div class="checkout-right">
+      <div class="label">Your investment</div>
+      <p class="checkout-price">$7</p>
+      <p class="checkout-price-sub">One-time payment &middot; instant access</p>
+      <a href="https://www.jessicapinili.com/offers/2TRfmpAX/checkout" target="_blank" class="checkout-btn">Get Instant Access</a>
+      <p class="checkout-fine"><strong>Video Training</strong> + <strong>Content Dashboard</strong><br>Delivered straight to your inbox</p>
+    </div>
   </div>
 </section>
 
